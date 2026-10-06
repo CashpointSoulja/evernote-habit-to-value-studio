@@ -1,0 +1,22 @@
+{
+  "name": "evernote-habit-to-value-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Evernote Habit-to-Value Studio: independent concept by Ayo Ahmed. Synthetic data; not affiliated with Evernote or Bending Spoons.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "fixtures": "node scripts/make-fixtures.mjs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260927.1",
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2",
+    "wrangler": "^4.142.0"
+  }
+}

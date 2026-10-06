@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visual guide · Evernote Habit-to-Value Studio (independent concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+:root{--g:#00A82D;--gd:#005611;--gt:#E6F9E9;--p:#F9F6F2;--p2:#F4EEE5;--i:#141414;--i3:#4E4D4C;--s:#E7E7E7;--bs:#141415;--lime:#C7FF9F}
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 Inter,system-ui,sans-serif;background:var(--p);color:var(--i)}
+.strip{background:var(--bs);color:#fff;padding:8px 20px;font-size:13px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.strip img{height:14px}.strip b{color:var(--lime);font-weight:500}
+main{max-width:1040px;margin:0 auto;padding:32px 20px}
+h1{font:400 44px/1.1 "Instrument Serif",Georgia,serif;margin:0 0 8px}h2{font-size:20px;margin:40px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.card{background:#fff;border:1px solid var(--s);border-radius:16px;padding:16px;box-shadow:0 1px 1px -.5px rgba(89,63,25,.04),0 6px 6px -3px rgba(89,63,25,.02)}
+.sw{height:64px;border-radius:10px;border:1px solid var(--s);margin-bottom:8px}
+code{font:13px ui-monospace,Menlo,monospace;color:var(--i3);word-break:break-all}
+.logos{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:700px){.logos{grid-template-columns:1fr}}
+.btn{font:600 15px Inter;border-radius:8px;padding:10px 16px;border:1px solid transparent;cursor:pointer}
+.btn.p{background:var(--g);color:#fff}.btn.s{background:#fff;border-color:#A1A1A1;color:var(--i)}
+.btn:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(0,168,45,.2);border-color:var(--g)}
+.tag{display:inline-block;background:var(--gt);color:var(--gd);border-radius:100px;padding:2px 10px;font-size:13px;font-weight:600}
+.task{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--s)}
+.task span{width:18px;height:18px;border:2px solid #A1A1A1;border-radius:50%}
+</style>
+</head>
+<body>
+<div class="strip"><img src="/brand/bending-spoons-logotype.svg" alt="Bending Spoons logotype"> <span>Audition context: Growth manager role</span> <b>Independent concept by Ayo Ahmed · synthetic data · not affiliated with Evernote or Bending Spoons</b></div>
+<main>
+<h1>Visual guide</h1>
+<p>Companion to <code>docs/brand-design.md</code>. Evernote shapes the functional note and task preview. Bending Spoons only identifies the audition context. All values were taken from the public sites on 6 Oct 2026.</p>
+
+<h2>Logos (unaltered, with sources)</h2>
+<div class="logos">
+<div class="card"><img src="/brand/evernote-logo.svg" alt="Evernote wordmark" height="40"><img src="/brand/evernote-app-icon.png" alt="Evernote app icon" height="40" style="margin-left:12px"><p><b>Evernote</b>: product being studied. Used in the note preview header.</p><code>https://evernote.com/_next/static/media/evernote-logo.86b04f42.svg</code><br><code>https://evernote.com/images/evernote-logo-ios.png</code></div>
+<div class="card" style="background:var(--bs);color:#fff"><img src="/brand/bending-spoons-logotype.svg" alt="Bending Spoons logotype" height="22"><p><b>Bending Spoons</b>: audition context only. White logotype, used on dark ink only.</p><code style="color:#C9C9C9">https://bendingspoons.com/_next/static/media/bsp-logotype.0a3.jbkx-aafu.svg</code></div>
+</div>
+
+<h2>Evernote colours (functional preview)</h2>
+<div class="grid">
+<div class="card"><div class="sw" style="background:#00A82D"></div><b>Green</b><br><code>#00A82D primary-400</code></div>
+<div class="card"><div class="sw" style="background:#005611"></div><b>Deep green</b><br><code>#005611 primary-600 (text)</code></div>
+<div class="card"><div class="sw" style="background:#E6F9E9"></div><b>Green tint</b><br><code>#E6F9E9 primary-100</code></div>
+<div class="card"><div class="sw" style="background:#F9F6F2"></div><b>Paper</b><br><code>#F9F6F2 bg-primary</code></div>
+<div class="card"><div class="sw" style="background:#F4EEE5"></div><b>Paper 2</b><br><code>#F4EEE5 bg-secondary</code></div>
+<div class="card"><div class="sw" style="background:#141414"></div><b>Ink</b><br><code>#141414 text-primary</code></div>
+<div class="card"><div class="sw" style="background:#4E4D4C"></div><b>Ink 3</b><br><code>#4E4D4C text-tertiary</code></div>
+<div class="card"><div class="sw" style="background:#4D64FF"></div><b>Blue</b><br><code>#4D64FF accent</code></div>
+</div>
+
+<h2>Bending Spoons colours (context strip only)</h2>
+<div class="grid">
+<div class="card"><div class="sw" style="background:#141415"></div><b>Ink</b><br><code>#141415</code></div>
+<div class="card"><div class="sw" style="background:#C7FF9F"></div><b>Lime</b><br><code>#C7FF9F</code></div>
+<div class="card"><div class="sw" style="background:#5D5E63"></div><b>Grey</b><br><code>#5D5E63</code></div>
+</div>
+
+<h2>Type</h2>
+<div class="card"><p style="font:600 28px Inter;margin:0">Inter 600: Weekly product sync</p><p style="margin:4px 0">Inter 400: Body text in notes and controls. Used across evernote.com.</p><p style="font:400 30px 'Instrument Serif',serif;margin:8px 0">Instrument Serif: memo headings (Bending Spoons editorial face)</p><code>Mono: event_id,user_id,variant,assignment_seed</code></div>
+
+<h2>Components</h2>
+<div class="card">
+<button class="btn p">Turn selected lines into tasks</button> <button class="btn s">Reset local data</button> <span class="tag">Hypothesis metric</span>
+<div class="task"><span aria-hidden="true"></span>Send pricing page draft to Lena by Thursday</div>
+<div class="task"><span aria-hidden="true"></span>Book usability sessions for next sprint</div>
+<p style="font-size:14px;color:var(--i3)">Focus state: Tab to the buttons above to see the 4px green halo <code>0 0 0 4px rgba(0,168,45,.2)</code>.</p>
+</div>
+<p style="margin-top:40px;font-size:13px;color:var(--i3)">Evernote and Bending Spoons names and logos belong to their owners. This is an independent concept by Ayo Ahmed using synthetic data.</p>
+</main>
+</body>
+</html>
