@@ -1,0 +1,163 @@
+1
+00:00:00,929 --> 00:00:03,019
+This is Habit-to-Value Studio,
+
+2
+00:00:03,019 --> 00:00:07,058
+an independent concept by Ayo Ahmed for the Bending Spoons
+
+3
+00:00:07,058 --> 00:00:10,053
+Growth manager role. All data is synthetic.
+
+4
+00:00:10,053 --> 00:00:13,745
+It is not affiliated with Evernote or Bending Spoons.
+
+5
+00:00:14,194 --> 00:00:18,013
+In the task-first journey, a new user picks a job first:
+
+6
+00:00:18,013 --> 00:00:20,537
+turn meeting notes into next actions.
+
+7
+00:00:20,537 --> 00:00:23,674
+That opens an original synthetic meeting note.
+
+8
+00:00:24,124 --> 00:00:28,965
+The note is editable. I change the title and save it locally.
+
+9
+00:00:28,965 --> 00:00:31,108
+Nothing leaves the browser.
+
+10
+00:00:31,559 --> 00:00:35,627
+Now I tick the lines that need doing and turn them into
+
+11
+00:00:35,627 --> 00:00:37,993
+tasks. The note stays unchanged,
+
+12
+00:00:37,993 --> 00:00:40,730
+and each task links back to its line.
+
+13
+00:00:40,730 --> 00:00:42,431
+First value is reached.
+
+14
+00:00:42,882 --> 00:00:46,504
+I schedule a revisit for day two and simulate it.
+
+15
+00:00:46,504 --> 00:00:50,496
+No notification is sent. The cue names the open tasks.
+
+16
+00:00:50,496 --> 00:00:54,414
+Completing one on a later day counts as repeat value.
+
+17
+00:00:54,414 --> 00:00:58,036
+Only then does a transparent plan preview appear,
+
+18
+00:00:58,036 --> 00:01:00,402
+and it never purchases anything.
+
+19
+00:01:00,853 --> 00:01:04,935
+Now the growth side. I import a seeded cohort CSV.
+
+20
+00:01:04,935 --> 00:01:07,874
+Rows are validated and deduplicated,
+
+21
+00:01:07,874 --> 00:01:11,221
+and users come only from assignment rows.
+
+22
+00:01:11,671 --> 00:01:14,751
+The contract is pre-registered before results:
+
+23
+00:01:14,751 --> 00:01:16,693
+user-level stable assignment,
+
+24
+00:01:16,693 --> 00:01:18,835
+intent-to-treat, mature windows,
+
+25
+00:01:18,835 --> 00:01:20,911
+minimum sample, and guardrails.
+
+26
+00:01:21,362 --> 00:01:25,552
+This cohort shows a six point lift in repeat value overall.
+
+27
+00:01:25,552 --> 00:01:29,032
+But traffic mix differed between the ramp phases.
+
+28
+00:01:29,032 --> 00:01:31,447
+Holding the acquisition mix fixed,
+
+29
+00:01:31,447 --> 00:01:34,287
+the effect reverses to minus two points.
+
+30
+00:01:34,287 --> 00:01:36,986
+So the decision is iterate, not scale.
+
+31
+00:01:37,437 --> 00:01:41,899
+Next, conversion goes up, but refunds rise and repeat
+
+32
+00:01:41,899 --> 00:01:46,024
+value falls. Net revenue per eligible user drops.
+
+33
+00:01:46,024 --> 00:01:48,045
+The rollout is rejected.
+
+34
+00:01:48,495 --> 00:01:51,177
+Finally, a biased, incomplete export.
+
+35
+00:01:51,177 --> 00:01:54,874
+Refund events are missing, assignments are dropped,
+
+36
+00:01:54,874 --> 00:01:58,715
+the sample ratio is off, and most users are immature.
+
+37
+00:01:58,715 --> 00:02:02,847
+The tool refuses to call a winner and lists every reason.
+
+38
+00:02:03,297 --> 00:02:07,221
+Every analysis exports an evidence memo with the contract,
+
+39
+00:02:07,221 --> 00:02:09,994
+gates, results, decision and limitations.
+
+40
+00:02:09,994 --> 00:02:11,956
+That's Habit-to-Value Studio:
+
+41
+00:02:11,956 --> 00:02:15,609
+a working user flow, and a disciplined scale decision.
