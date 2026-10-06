@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Evernote Habit-to-Value Studio · independent concept by Ayo Ahmed</title>
+<meta name="description" content="Independent concept by Ayo Ahmed: a synthetic first-session note-to-task experiment and a growth decision that checks repeat value, refunds and acquisition mix. Not affiliated with Evernote or Bending Spoons.">
+<link rel="icon" href="/brand/evernote-app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="context-strip" role="note">
+  <img src="/brand/bending-spoons-logotype.svg" alt="Bending Spoons" class="bs-logo">
+  <span>Independent concept by Ayo Ahmed for the Bending Spoons Growth manager role</span>
+  <strong>Synthetic data only · Not affiliated with Evernote or Bending Spoons</strong>
+</div>
+<header class="app-head">
+  <div class="brand"><img src="/brand/evernote-app-icon.png" alt="" width="32" height="32"><div><h1>Habit-to-Value Studio</h1><p>A first-session note-to-task experiment for Evernote, plus a growth decision that refuses headline-only wins.</p></div></div>
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" id="tab-preview" aria-controls="panel-preview" aria-selected="true">1 · Note → tasks preview</button>
+    <button role="tab" id="tab-analysis" aria-controls="panel-analysis" aria-selected="false" tabindex="-1">2 · Growth analysis</button>
+    <button role="tab" id="tab-about" aria-controls="panel-about" aria-selected="false" tabindex="-1">3 · Contract &amp; sources</button>
+  </nav>
+</header>
+<main id="main">
+<div id="status" class="sr-only" aria-live="polite"></div>
+
+<!-- PREVIEW -->
+<section role="tabpanel" id="panel-preview" aria-labelledby="tab-preview">
+  <div class="journey-bar">
+    <fieldset class="seg"><legend>Journey being previewed</legend>
+      <label><input type="radio" name="journey" value="baseline"> Baseline: blank note</label>
+      <label><input type="radio" name="journey" value="task_first" checked> Task-first: job-led</label>
+    </fieldset>
+    <div class="clock" aria-live="polite"><span class="pill" id="clock">Simulated day 0</span></div>
+    <div class="bar-actions"><button class="btn s" id="export-state">Export local data</button><button class="btn s danger" id="reset">Reset local data</button></div>
+  </div>
+  <p class="local-note">Saved only in this browser (localStorage). Not durable, not shared, not secure. Nothing is sent to a server. No reminders, emails or notifications are ever sent.</p>
+
+  <div id="job-chooser" class="card job" hidden>
+    <h2>What do you want to do first?</h2>
+    <p class="muted">The task-first journey asks for a job before showing a note. Only the first job is part of this experiment.</p>
+    <div class="jobs" role="radiogroup" aria-label="First job">
+      <button class="job-opt" data-job="meeting" role="radio" aria-checked="false"><b>Turn meeting notes into next actions</b><span>Open a synthetic meeting note and pick the lines that need doing</span></button>
+      <button class="job-opt" data-job="capture" role="radio" aria-checked="false"><b>Capture an idea</b><span>Out of scope here. Opens a blank note</span></button>
+      <button class="job-opt" data-job="clip" role="radio" aria-checked="false"><b>Save something from the web</b><span>Out of scope here. Opens a blank note</span></button>
+    </div>
+  </div>
+
+  <div id="cue" class="cue" role="status" hidden></div>
+
+  <div class="workspace" id="workspace">
+    <aside class="sidebar" aria-label="Notebook">
+      <div class="side-user"><span class="avatar" aria-hidden="true">S</span> Synthetic user</div>
+      <ul>
+        <li><span>Notes</span><b id="count-notes">1</b></li>
+        <li><span>Tasks open</span><b id="count-open">0</b></li>
+        <li><span>Tasks done</span><b id="count-done">0</b></li>
+      </ul>
+      <div class="side-metrics" aria-label="Provisional metric checks">
+        <h3>Hypothesis metrics</h3>
+        <p id="m-first" class="check">First value: not yet</p>
+        <p id="m-repeat" class="check">Repeat value: not yet</p>
+        <p class="tiny">Provisional definitions, not Evernote KPIs. See tab 3.</p>
+      </div>
+    </aside>
+    <section class="editor" aria-label="Note editor">
+      <div class="note-meta"><span id="note-notebook">First notebook</span><span id="saved-at" class="muted">Not saved</span></div>
+      <label class="sr-only" for="note-title">Note title</label>
+      <textarea id="note-title" class="note-title" rows="1" autocomplete="off"></textarea>
+      <label class="sr-only" for="note-body">Note body</label>
+      <textarea id="note-body" class="note-body" rows="12" spellcheck="true"></textarea>
+      <div class="editor-actions"><button class="btn p" id="save-note">Save note</button><span class="tiny muted">Ctrl/⌘ + S also saves</span></div>
+      <div class="line-picker" id="line-picker">
+        <h3 id="lp-title">Pick lines that need doing</h3>
+        <p class="tiny muted" id="lp-help">Tick lines, then turn them into tasks. The note text is not changed.</p>
+        <ul id="lines" aria-labelledby="lp-title"></ul>
+        <button class="btn p" id="make-tasks" disabled>Turn selected lines into tasks</button>
+      </div>
+    </section>
+    <section class="tasks" aria-label="Tasks">
+      <h2>Tasks <span class="muted" id="tasks-sub">from this note</span></h2>
+      <ul id="task-list"></ul>
+      <p id="no-tasks" class="muted tiny">No tasks yet.</p>
+      <form id="add-task" class="add-task"><label class="sr-only" for="new-task">New task</label><input id="new-task" placeholder="Add a task by hand"><button class="btn s">Add</button></form>
+      <div class="revisit card-inset">
+        <h3>Next session (simulated)</h3>
+        <p class="tiny">Picks a day to come back. Nothing will notify you. The cue only appears when you press “Simulate revisit”.</p>
+        <label for="revisit-day">Revisit on</label>
+        <select id="revisit-day"><option value="1">Day 1 (tomorrow)</option><option value="2">Day 2</option><option value="3">Day 3</option><option value="5">Day 5</option><option value="6">Day 6</option></select>
+        <div class="row"><button class="btn s" id="schedule">Schedule</button><button class="btn p" id="simulate">Simulate revisit</button></div>
+        <p id="revisit-state" class="tiny muted">No revisit scheduled.</p>
+      </div>
+      <div id="upgrade" class="upgrade" hidden>
+        <h3>Plan preview</h3>
+        <p><b>Synthetic "Personal" plan · XTS 10.00 / month</b><br><span class="tiny">Synthetic price in XTS, the ISO test currency. Not an Evernote plan or price.</span></p>
+        <p class="tiny">Preview only. Nothing is purchased and no payment details are requested.</p>
+        <div class="row"><button class="btn s" id="up-preview">See what checkout would show</button><button class="btn s" id="up-dismiss">Not now</button></div>
+        <p id="up-msg" class="tiny" aria-live="polite"></p>
+      </div>
+    </section>
+  </div>
+
+  <details class="card log">
+    <summary>Session event log (<span id="log-count">0</span> events, same schema as the cohort CSV)</summary>
+    <div class="table-wrap"><table><thead><tr><th>event_type</th><th>occurred_at</th><th>variant</th><th>note_id</th><th>task_id</th></tr></thead><tbody id="log"></tbody></table></div>
+    <button class="btn s" id="export-log">Download session CSV</button>
+  </details>
+
+  <div class="card compare">
+    <h2>Baseline vs task-first: what differs</h2>
+    <div class="grid2">
+      <div><h3>Baseline: blank note</h3><ul><li>Opens straight into an empty note.</li><li>Tasks exist but are not suggested.</li><li>The revisit cue is a generic note list.</li></ul></div>
+      <div><h3>Task-first: job-led</h3><ul><li>Asks for the job first, then opens a meeting note.</li><li>Invites picking lines to become tasks before any plan prompt.</li><li>The revisit cue names the open tasks and where they came from.</li></ul></div>
+    </div>
+    <p class="tiny muted">Both use features Evernote already has (notes, tasks, templates). The hypothesis is only about the order of the first session. There is no claim that the current onboarding is broken.</p>
+  </div>
+</section>
+
+<!-- ANALYSIS -->
+<section role="tabpanel" id="panel-analysis" aria-labelledby="tab-analysis" hidden>
+  <ol class="steps" aria-label="Analysis steps">
+    <li class="card" id="step-import">
+      <h2><span class="n">1</span> Import a cohort CSV</h2>
+      <p class="muted">Seeded synthetic cohorts. Each one is built to test a different decision.</p>
+      <div class="fixtures">
+        <button class="btn s fx" data-fx="healthy">Healthy test</button>
+        <button class="btn s fx" data-fx="simpson">Acquisition-mix reversal</button>
+        <button class="btn s fx" data-fx="guardrail">Conversion up, refunds up</button>
+        <button class="btn s fx" data-fx="biased">Biased / incomplete export</button>
+      </div>
+      <label class="file"><span>Or upload your own CSV</span><input type="file" id="file" accept=".csv,text/csv"></label>
+      <p id="import-state" class="tiny" aria-live="polite">No cohort loaded.</p>
+    </li>
+    <li class="card" id="step-validate" hidden>
+      <h2><span class="n">2</span> Validate and deduplicate</h2>
+      <div id="validate-out"></div>
+    </li>
+    <li class="card" id="step-contract" hidden>
+      <h2><span class="n">3</span> Pre-registered contract</h2>
+      <p class="muted">Locked before results are shown. Changing a value re-runs the analysis from scratch and is written into the memo.</p>
+      <form id="contract" class="contract"></form>
+      <button class="btn p" id="run">Lock contract and analyse</button>
+    </li>
+    <li class="card" id="step-results" hidden>
+      <h2><span class="n">4</span> Results: mature users, intent-to-treat</h2>
+      <div id="gates"></div>
+      <div id="results"></div>
+    </li>
+    <li class="card" id="step-segments" hidden>
+      <h2><span class="n">5</span> Segment by acquisition source</h2>
+      <label for="seg-metric">Metric</label>
+      <select id="seg-metric"><option value="repeatValue">Seven-day repeat value</option><option value="trial">Trial started</option><option value="paid">Paid conversion</option><option value="firstValue">First value</option></select>
+      <div id="segments"></div>
+    </li>
+    <li class="card" id="step-decision" hidden>
+      <h2><span class="n">6</span> Guardrails and decision</h2>
+      <div id="guardrails"></div>
+      <div id="decision" class="decision" tabindex="-1"></div>
+      <div class="row"><button class="btn p" id="export-memo">Export evidence memo (.md)</button><button class="btn s" id="export-quarantine">Export quarantined rows (.csv)</button></div>
+    </li>
+  </ol>
+</section>
+
+<!-- ABOUT -->
+<section role="tabpanel" id="panel-about" aria-labelledby="tab-about" hidden>
+  <div class="card prose">
+    <h2>Metric contract (provisional hypotheses)</h2>
+    <ul>
+      <li><b>First value</b>: a note is saved and at least one meaningful task is created in the first 24 hours. In the preview, "meaningful" means at least three words.</li>
+      <li><b>Repeat value (primary)</b>: on a later day within seven days, the user revisits and completes a task on the same day.</li>
+      <li><b>Trial</b> and <b>paid</b> conversion are reported separately.</li>
+      <li><b>Net revenue per eligible user</b> = paid minus refunds within a fixed 14-day mature window, divided by every mature assigned user. Synthetic XTS prices. This is not lifetime value.</li>
+      <li>Randomisation unit: user. Stable assignment: FNV-1a hash of <code>assignment_seed|user_id</code> mod 100 against the seed's treatment percentage. Denominator: intent-to-treat from the assignment row. Event rows are never counted as users.</li>
+      <li>No decision is made if any of these fail: quarantine above 5%, orphan events above 1%, a missing event type, assignment conflicts or crossover above 1%, sample-ratio mismatch (chi-square above 10.83), immature users above 25%, or fewer than 150 mature users per arm.</li>
+    </ul>
+    <h2>Facts vs hypotheses</h2>
+    <ul>
+      <li><b>Fact (public)</b>: Bending Spoons lists Evernote as a portfolio product, acquired January 2023 (bendingspoons.com).</li>
+      <li><b>Fact (public)</b>: Evernote already offers templates and tasks (evernote.com, Evernote Help Center).</li>
+      <li><b>Fact (public)</b>: the Growth manager posting describes understanding, analysing, ideating, testing and scaling.</li>
+      <li><b>Hypothesis</b>: a job-led note-to-task first session gives a stronger reason to come back before any plan prompt. Not shown by any data here.</li>
+      <li><b>Not claimed</b>: that current onboarding is broken, any real uplift, or access to any Evernote or Bending Spoons data.</li>
+    </ul>
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li><a href="https://jobs.bendingspoons.com/positions/66ba2d6da8ca8044583802ff" rel="noopener" target="_blank">Bending Spoons: Growth manager posting</a></li>
+      <li><a href="https://bendingspoons.com/" rel="noopener" target="_blank">bendingspoons.com: portfolio</a></li>
+      <li><a href="https://medium.com/bendingspoons/driving-growth-at-bending-spoons-c972d928b3ec" rel="noopener" target="_blank">Driving growth at Bending Spoons (historical context)</a></li>
+      <li><a href="https://help.evernote.com/hc/en-us/articles/360001929468-Use-templates" rel="noopener" target="_blank">Evernote Help: Use templates</a></li>
+      <li><a href="https://help.evernote.com/hc/en-us/articles/1500003792141-Tasks-Overview" rel="noopener" target="_blank">Evernote Help: Tasks overview</a></li>
+      <li><a href="https://evernote.com/templates" rel="noopener" target="_blank">evernote.com/templates</a></li>
+    </ul>
+    <p><a href="/brand-guide.html">Visual guide and logo sources</a></p>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <p>Evernote Habit-to-Value Studio is an independent concept by Ayo Ahmed. Synthetic data only. Not affiliated with, endorsed by, or connected to Evernote or Bending Spoons. Their names and logos belong to their owners and are used only to identify the product and the role.</p>
+</footer>
+<script type="module" src="/app.js"></script>
+</body>
+</html>
