@@ -218,7 +218,7 @@ function resetAnalysis() {
 }
 async function loadFixture(name) {
   $('#import-state').textContent = `Loading ${name}.csv…`;
-  const res = await fetch(`/fixtures/${name}.csv`);
+  const res = await fetch(`fixtures/${name}.csv`);
   if (!res.ok) { $('#import-state').textContent = `Could not load ${name}.csv (HTTP ${res.status}).`; return; }
   importText(`${name}.csv`, await res.text());
   document.querySelectorAll('.fx').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.fx === name)));
